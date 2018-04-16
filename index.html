@@ -1,111 +1,143 @@
-<!DOCTYPE html>
-<html lang="en-us">
+<!doctype html>
+<html lang="en">
 
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
         crossorigin="anonymous">
 
-    <!--FontAwesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <style>
-        body {
-            background: url('assets/images/pokemon-map.png') no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            background-size: cover;
-            -o-background-size: cover;
-        }
-
-        footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            height: 70px;
-            width: 100%;
-        }
-
-        body {
-            font-family: "Courier New", Courier, monospace;
-        }
-
-        .bg-dark {
-            background-color: black !important;
-        }
-
-        a:hover {
-            text-decoration: none;
-
-        }
-
-        .game-choice:hover {
-            background-color: orangered;
-            cursor: pointer;
-
-        }
-    </style>
-
-    <title>gifTastic</title>
+    <title>gifTastic! (a gif downloader)</title>
 </head>
 
+
+
 <body>
-    <!--Navigation-->
-    <nav class="navbar navbar-dark bg-dark ">
-        <div class="container col-12 col-xs-12">
-            <a class="navbar-brand text-white text-center text-uppercase mx-auto pt-3" href="index.html">
-                <h2 class="border border-white pl-1 pr-1 pb-1 pt-1">GifTastic!</h2>
+
+    <nav class="navbar navbar-expand-sm|md|lg|-xl navbar-light bg-light">
+        <span class="border border-dark-3">
+            <a class="navbar-brand border-dark" href="#">
+                <h1 class="pl-3 display-1|2|3|4">gifTastic.</h1>
             </a>
+        </span>
+        <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" href="#">Action 1</a>
+                        <a class="dropdown-item" href="#">Action 2</a>
+                    </div>
+
+                </li>
+            </ul>
+
         </div>
     </nav>
-    <br>
 
-    <!--Main Content-->
-    <section>
-        <div class="container col-md-8 bg-primary text-light border border-white rounded">
-        </div>
-    </section>
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <!--Sticky Footer -->
-    <footer class="container-fluid bg-dark" id="footer-container">
+    <div class="container-fluid bg-secondary">
         <div class="row">
-            <div class="col-lg-12">
-                <p class="text-center pt-2 mb-1" id="footer-text">
-                    <small class="text-white">Copyright &copy2018</small>
-                </p>
+
+            <!--Gif Content (Panel for now)-->
+            <div class="col-8">
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Search Results</h3>
+                    </div>
+
+                    <div class="panel-body">
+
+                        GIFFFSS
+                    </div>
+                </div>
+                Gif Content
+            </div>
+
+
+            <!--Search and Favorites Column-->
+            <div class="col-4 bg-light">
+
+                <!--Search Input-->
+                <form class="form my-2 my-lg-0 mr-1">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+
+                    <!--Gif Website to Search-->
+                    <div class="form-group">
+                        <label for="selectGifWebsite">Gif Website:</label>
+                        <select class="form-control" id="quantity-input">
+                            <option>Giphy</option>
+                            <option>Something Else</option>
+                            <option>Don't Care</option>
+                        </select>
+                    </div>
+
+                    <!--Rating-->
+                    <div class="form-group">
+                        <label for="quantityOfResults">Results Quantity:</label>
+                        <select class="form-control" id="quantity-input">
+                            <option>5</option>
+                            <option>10</option>
+                            <option>20</option>
+                            <option>50</option>
+                        </select>
+                    </div>
+
+                    <!--Rating-->
+                    <div class="form-group">
+                        <label for="ratingSelection">Select a Rating</label>
+                        <select class="form-control" id="rating-input">
+                            <option>G</option>
+                            <option>PG</option>
+                            <option>R</option>
+                        </select>
+                    </div>
+
+                    <!--Search Submit-->
+                    <button class="btn btn-success mt-3 btn-block" type="submit">Search</button>
+                </form>
+
+                <!-- Random Button Options -->
+
+                <label for="randomChoices">Random Options:</label>
+                <button type="button" class="btn btn-block btn-secondary" id="random1">Random 1</button>
+                <button type="button" class="btn btn-block btn-secondary" id="random2">Random 2</button>
+                <button type="button" class="btn btn-block btn-secondary" id="random3">Random 3</button>
+
+                <label for="downloadSelected">Download:</label>
+                <button type="button" class="btn btn-block btn-secondary" id="button-download">Download</button>
+
+
             </div>
         </div>
-
-    </footer>
-
-    <!--Bootstrap JS and Jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
         crossorigin="anonymous"></script>
-
-    <!--FontAwesome -->
-
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
-        crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/brands.js" integrity="sha384-sCI3dTBIJuqT6AwL++zH7qL8ZdKaHpxU43dDt9SyOzimtQ9eyRhkG3B7KMl6AO19"
-        crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
 
-
-    <!-- Link to my JS-->
-    <script src="assets/js/app.js"></script>
-
+    <script src="assets/js/app.js">
+    </script>
 </body>
 
 </html>

@@ -37,3 +37,5 @@ Other ideas-
 - 
 
 */
+
+$(document).on("ready" )
