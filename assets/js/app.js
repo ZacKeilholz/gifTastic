@@ -29,7 +29,7 @@ Bonus Goals-
 4. Include a 1 click download button for each Gif- this should work on multiple device types
 5. integrate search with addtl api's like OMDB or bands in town.  Be creative
 6. Allow users to add gifs to a favorites section
-7. 
+7. Major Challange:  Make the favorites section remain even after page is loaded
 
 Other ideas-
 -Brutalist ala Craigslist
