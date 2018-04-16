@@ -57,17 +57,28 @@
             <!--Gif Content (Panel for now)-->
             <div class="col-8">
                 <div class="panel panel-default">
-
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Search Results</h3>
+                    <div class="row">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="search-results">Search Results</h3>
+                        </div>
                     </div>
 
-                    <div class="panel-body">
+                    <div class="row">
 
-                        GIFFFSS
+                        <!--Gif Container for jQuery content-->
+                        <div id="gif-container-main">
+                            <div class="card" style="width: 12rem;">
+                                <img class="card-img-top" src="https://media.giphy.com/media/gItqpE19cNWbm/200w_d.gif" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title" id="gif-name">Gif Name:</h5>
+                                    <p class="card-text" id="gif-rating">Rating:</p>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
-                Gif Content
             </div>
 
 
@@ -85,20 +96,20 @@
                     <div class="form-group">
                         <label for="selectGifWebsite">Gif Website:</label>
                         <select class="form-control" id="gif-website-selection">
-                            <option>Giphy</option>
-                            <option>Something Else</option>
-                            <option>Don't Care</option>
+                            <option value="a" selected>Giphy</option>
+                            <option value="b">Something Else</option>
+                            <option value="c">Don't Care</option>
                         </select>
                     </div>
 
-                    <!--Rating-->
+                    <!--Number of Search Results-->
                     <div class="form-group">
                         <label for="quantityOfResults">Results Quantity:</label>
                         <select class="form-control" id="quantity-input-selection">
-                            <option>5</option>
-                            <option>10</option>
-                            <option>20</option>
-                            <option>50</option>
+                            <option value=5>5</option>
+                            <option value=10 selected>10</option>
+                            <option value=20>20</option>
+                            <option value=50>50</option>
                         </select>
                     </div>
 
@@ -106,18 +117,22 @@
                     <div class="form-group">
                         <label for="ratingSelection">Select a Rating</label>
                         <select class="form-control" id="rating-input">
-                            <option>G</option>
-                            <option>PG</option>
-                            <option>R</option>
+                            <option value="g">G</option>
+                            <option value="pg" selected>PG</option>
+                            <option value="r">R</option>
+                            <option value="any">Don't Care</option>
                         </select>
                     </div>
 
                     <!--Search Submit-->
-                    <button class="btn btn-success mt-3 btn-block" id="search-button" type="submit">Search</button>
+                    <button class="btn btn-success" id="search-button" type="submit">Search</button>
+
+                    <!--Reset button-->
+                    <button class="btn btn-danger" id="reset-button" type="submit">Reset</button>
+
                 </form>
 
                 <!-- Random Button Options -->
-
                 <label for="randomChoices">Random Options:</label>
                 <button type="button" class="btn btn-block btn-secondary" id="random1">Random 1</button>
                 <button type="button" class="btn btn-block btn-secondary" id="random2">Random 2</button>
@@ -132,15 +147,15 @@
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
 
-    <script src="assets/js/app.js">
-    </script>
+
+    <script src="assets/js/app.js"></script>
 </body>
 
 </html>

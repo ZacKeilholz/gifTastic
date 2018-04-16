@@ -37,5 +37,126 @@ Other ideas-
 - 
 
 */
+/* 
+ID's from HTML
 
-$(document).on("ready" )
+#gif-container-main : Send incoming Gifs here
+
+Search: 
+#search-text-input : Input text from user
+#gif-website-selection : Option Selector with options: Giphy | Something Else | Don't Care
+#quantity-input-selection : Qtty of search results
+#rating-selection : Option selector: g | pg | r | any
+#search-button : Submit form
+
+#reset-button : Clear Search 
+
+Ajax code:
+
+
+*/
+
+//Functions
+//=================================
+
+function runQuery(urlInput) {
+
+    //Ajax Function
+    $.ajax({
+        url:urlInput,
+        method:"GET"
+    }).then(function(gifsRecieved) {
+
+        console.log(gifsRecieved);
+
+        //$("#search-results").text(JSON.stringify(gifsRecieved));
+
+        //Clear out gif container
+        var gifContainer = $("#gif-container-main");
+        gifContainer.empty();
+
+        var imageLink = gifsRecieved.data[1].images.original;
+        var imageLink = imageLink.split(',');
+        var cleanedImageLink = "";
+
+        for (var i=0; i<imageLink[i];i++) {
+            cleanedImageLink+=imageLink[i].toString();;
+            console.log(cleanedImageLink);
+        }
+
+
+        // console.log(gifsRecieved.data[1].images.original);
+        // //Create our html elements
+        // for (var i = 0; i< gifsRecieved.data.length; i++) {
+        //     var newImg = $("<img>");
+
+            
+
+        //     console.log(gifsRecieved.data[i].images.original);
+
+        //     newImg.attr("src",gifsRecieved.data[i].original);
+        //     gifContainer.append(newImg);
+
+
+        // }
+
+
+    });
+
+};
+
+
+
+
+
+
+$(document).ready(function () {
+
+    //1. Retrieve all search values when search button is clicked (and clear out the old?)
+
+
+    $("#search-button").on("click", function () {
+        event.preventDefault();
+
+        /////////////////////////////////
+        //Retrieve All Search Input Values
+        /////////////////////////////////
+        var queryURL = "";
+        //Text Input
+        var queryTerm = $("#search-text-input").val().trim();
+
+        //Website (Just giphy for now)
+        var website = $("#gif-website-selection").val();
+
+        //# of Results
+        var quantity = $("#quantity-input-selection").val();
+
+        //Rating 
+        var rating = $("#rating-input").val();
+
+        //URL Construction 
+        console.log(queryTerm,website,quantity,rating);
+        switch (website) {
+
+            //Giphy is selected
+            case "a":
+                queryURL =  "https://api.giphy.com/v1/gifs/search?q=" + queryTerm + '&api_key=dc6zaTOxFJmzC' + '&rating=' + rating + '&limit='+quantity;
+
+                break;
+
+            case "b":
+
+                break;
+
+            case "c":
+
+                break;
+            default:
+                break;
+        }
+
+        runQuery(queryURL);
+
+    });
+
+});
