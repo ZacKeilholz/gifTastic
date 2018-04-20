@@ -1,4 +1,4 @@
-# gifTastic - a .gif downloader
+# gifTastic - ### a .gif downloader
 
 ## About:
 
