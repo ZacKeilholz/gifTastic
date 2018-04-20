@@ -117,7 +117,7 @@ function runQuery(urlInput) {
             var newImg = $("<img>");
 
             //Add Url's for Still and Animate Custom Attr's
-            newImg.attr("data-still");
+            newImg.attr("data-still", results[i].images.fixed_height_still.url);
             newImg.attr("data-animate", results[i].images.fixed_height.url);
 
             //Img Starting state on Page
