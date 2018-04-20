@@ -71,9 +71,8 @@ function runQuery(urlInput) {
 
         console.log(results);
 
-        //Clear out gif container
-        var gifContainer = $("#gif-container-main");
-        gifContainer.empty();
+
+        //gifContainer.empty();
         $("#example-image").attr("src", results[1].images.fixed_height.url);
 
         //Create our html elements
@@ -108,7 +107,7 @@ function runQuery(urlInput) {
             gifCard.append(newImg);
             gifCard.append(p);
             divWrapper.append(gifCard);
-            gifContainer.append(divWrapper);
+            $gifContainerTarget.prepend(divWrapper);
 
         }
 
@@ -117,11 +116,39 @@ function runQuery(urlInput) {
 };
 
 
+//Random Word Ajax Call (I pre-created this URL on the Wordnik API website) 
+
+function randomWord(param) {
+
+    //API Query Constructed at: http://developer.wordnik.com/docs.html#!/words/getRandomWord_get_4
+    wordnikURL = 'http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech=noun&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=-1&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5';
+
+    //Ajax Call Function
+    $.ajax({
+        url: wordnikURL,
+        method: "GET"
+    }).then(function (response) {
+        var newWord = response;
+        console.log(newWord);
+        param.text(newWord.word);
+
+    });
+
+
+}
+
+
+//Jquery Global Targets:
+
+var $gifContainerTarget = $("#gif-container-main");
+var $resetButtonTarget = $("#reset-button");
+
+
 
 $(document).ready(function () {
 
-    //1. Retrieve all search values when search button is clicked (and clear out the old?)
 
+    //1. Retrieve all search values when search button is clicked (and clear out the old?)
 
     $("#search-button").on("click", function () {
         event.preventDefault();
@@ -167,6 +194,21 @@ $(document).ready(function () {
 
     });
 
+
+
+    $(".random-button").on("click", function () {
+        //Grab word from clicked Random button
+        event.preventDefault();
+        var randomWord = $(this).text();
+        console.log("RandomWord: ", randomWord);
+
+        //Clear out the search bar and replace with selected random word
+        var searchInputTarget = $("input");
+        searchInputTarget.val(randomWord);
+
+
+    });
+
     //Gif on Click Event- Should Start/Stop the Gif
     $("body").on("click", ".gif", function () {
         var state = $(this).attr("data-state");
@@ -178,8 +220,27 @@ $(document).ready(function () {
             $(this).attr("src", $(this).attr("data-still"));
             $(this).attr("data-state", "still");
         }
+
+
+    }).on("mouseenter", ".random-button", function () {
+        var hoveredButton = $(this);
+        randomWord(hoveredButton);
+
+        
+    }).on("click", "#reset-button", function () {
+        //Clear Gif Container, reset search form to default / cleared
+        $gifContainerTarget.empty();
     });
 
+
+
+
+    // }).on("mouseleave", ".random-button", function () {
+    //     var hoveredButton = $(this);
+    //     var buttonNumber = hoveredButton.attr("data-number");
+    //     console.log(buttonNumber);
+    //     hoveredButton.text("Random " + hoveredButton.attr("data-number"));
+    // });
 
 
 });

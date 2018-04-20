@@ -11,14 +11,15 @@
         crossorigin="anonymous">
 
     <title>gifTastic! (a gif downloader)</title>
-    
-    <style>
 
-    
+    <style>
+        img:hover {
+            cursor: pointer;
+        }
+
+        
     </style>
 </head>
-
-
 
 <body>
 
@@ -98,7 +99,7 @@
 
 
             <!--Search and Favorites Column-->
-            <div class="col-3 bg-light" id = "search-sidebar">
+            <div class="col-3 bg-light" id="search-sidebar">
 
                 <!--Search Input-->
 
@@ -140,18 +141,19 @@
                     </div>
 
                     <!--Search Submit-->
-                    <button class="btn btn-success" id="search-button" type="submit">Search</button>
-
-                    <!--Reset button-->
-                    <button class="btn btn-danger" id="reset-button" type="submit">Reset</button>
+                    <button class="btn btn-block btn-success mb-2" id="search-button" type="submit">Search</button>
 
                 </form>
+                <!--Reset button-->
+                <button class="btn btn-block btn-danger" id="reset-button">Reset</button>
+
+
 
                 <!-- Random Button Options -->
                 <label for="randomChoices">Random Options:</label>
-                <button type="button" class="btn btn-block btn-secondary" id="random1">Random 1</button>
-                <button type="button" class="btn btn-block btn-secondary" id="random2">Random 2</button>
-                <button type="button" class="btn btn-block btn-secondary" id="random3">Random 3</button>
+                <button type="button" class="btn btn-block btn-secondary random-button" data-number=1 id="random1">Random 1</button>
+                <button type="button" class="btn btn-block btn-secondary random-button" data-number=2 id="random2">Random 2</button>
+                <button type="button" class="btn btn-block btn-secondary random-button" data-number=3 id="random3">Random 3</button>
 
                 <label for="downloadSelected">Download:</label>
                 <button type="button" class="btn btn-block btn-danger" id="button-download">Download</button>
