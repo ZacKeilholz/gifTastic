@@ -61,52 +61,60 @@ Ajax code:
 
 function runQuery(urlInput) {
 
-    //Ajax Function
+    //Ajax Call Function
     $.ajax({
-        url:urlInput,
-        method:"GET"
-    }).then(function(gifsRecieved) {
+        url: urlInput,
+        method: "GET"
+    }).then(function (gifsRecieved) {
 
-        console.log(gifsRecieved);
+        var results = gifsRecieved.data;
 
-        //$("#search-results").text(JSON.stringify(gifsRecieved));
+        console.log(results);
 
         //Clear out gif container
         var gifContainer = $("#gif-container-main");
         gifContainer.empty();
+        $("#example-image").attr("src", results[1].images.fixed_height.url);
 
-        var imageLink = gifsRecieved.data[1].images.original;
-        var imageLink = imageLink.split(',');
-        var cleanedImageLink = "";
+        //Create our html elements
+        for (var i = 0; i < results.length; i++) {
 
-        for (var i=0; i<imageLink[i];i++) {
-            cleanedImageLink+=imageLink[i].toString();;
-            console.log(cleanedImageLink);
+            //Create Container and Elements- divWrapper controls responsiveness and margins
+            var divWrapper = $("<div>");
+            divWrapper.addClass("col-lg-3 col-md-12 mb-2");
+
+            var gifCard = $("<div>").addClass("card");
+
+            //Captions and Text (Add Clickable 'DOWNLOAD' Class Button here)
+            var p = $("<p>");
+            p.text("Rating: " + results[i].rating)
+            p.addClass("card-text");
+
+            //Create Image-
+            var newImg = $("<img>");
+
+            //Add Url's for Still and Animate Custom Attr's
+            newImg.attr("data-still", results[i].images.fixed_height_still.url);
+            newImg.attr("data-animate", results[i].images.fixed_height.url);
+
+            //Img Starting state on Page
+            var imgStartingState = newImg.attr("data-still");
+            newImg.attr("src", imgStartingState);
+
+            //Add Misc / Other classes - gif is the selector class
+            newImg.addClass("card-img-top gif");
+
+
+            gifCard.append(newImg);
+            gifCard.append(p);
+            divWrapper.append(gifCard);
+            gifContainer.append(divWrapper);
+
         }
-
-
-        // console.log(gifsRecieved.data[1].images.original);
-        // //Create our html elements
-        // for (var i = 0; i< gifsRecieved.data.length; i++) {
-        //     var newImg = $("<img>");
-
-            
-
-        //     console.log(gifsRecieved.data[i].images.original);
-
-        //     newImg.attr("src",gifsRecieved.data[i].original);
-        //     gifContainer.append(newImg);
-
-
-        // }
-
 
     });
 
 };
-
-
-
 
 
 
@@ -135,12 +143,12 @@ $(document).ready(function () {
         var rating = $("#rating-input").val();
 
         //URL Construction 
-        console.log(queryTerm,website,quantity,rating);
+        console.log(queryTerm, website, quantity, rating);
         switch (website) {
 
             //Giphy is selected
             case "a":
-                queryURL =  "https://api.giphy.com/v1/gifs/search?q=" + queryTerm + '&api_key=dc6zaTOxFJmzC' + '&rating=' + rating + '&limit='+quantity;
+                queryURL = "https://api.giphy.com/v1/gifs/search?q=" + queryTerm + '&api_key=dc6zaTOxFJmzC' + '&rating=' + rating + '&limit=' + quantity;
 
                 break;
 
@@ -158,5 +166,20 @@ $(document).ready(function () {
         runQuery(queryURL);
 
     });
+
+    //Gif on Click Event- Should Start/Stop the Gif
+    $("body").on("click", ".gif", function () {
+        var state = $(this).attr("data-state");
+
+        if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+        } else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+        }
+    });
+
+
 
 });

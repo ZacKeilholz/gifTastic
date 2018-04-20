@@ -11,6 +11,11 @@
         crossorigin="anonymous">
 
     <title>gifTastic! (a gif downloader)</title>
+    
+    <style>
+
+    
+    </style>
 </head>
 
 
@@ -55,7 +60,7 @@
         <div class="row">
 
             <!--Gif Content (Panel for now)-->
-            <div class="col-8">
+            <div class="col-9">
                 <div class="panel panel-default">
                     <div class="row">
                         <div class="panel-heading">
@@ -66,12 +71,22 @@
                     <div class="row">
 
                         <!--Gif Container for jQuery content-->
-                        <div id="gif-container-main">
-                            <div class="card" style="width: 12rem;">
-                                <img class="card-img-top" src="https://media.giphy.com/media/gItqpE19cNWbm/200w_d.gif" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title" id="gif-name">Gif Name:</h5>
-                                    <p class="card-text" id="gif-rating">Rating:</p>
+                        <div class="container">
+                            <div class="row" id="gif-container-main">
+                                <div class="card" style="width: 12rem;">
+                                    <img class="card-img-top" id='example-image' src="https://media.giphy.com/media/gItqpE19cNWbm/200w_d.gif" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title" id="gif-name">Gif Name:</h5>
+                                        <p class="card-text" id="gif-rating">Rating:</p>
+                                    </div>
+                                </div>
+
+                                <div class="card" style="width: 12rem;">
+                                    <img class="card-img-top" id='example-image' src="https://media.giphy.com/media/gItqpE19cNWbm/200w_d.gif" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title" id="gif-name">Gif Name:</h5>
+                                        <p class="card-text" id="gif-rating">Rating:</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +98,7 @@
 
 
             <!--Search and Favorites Column-->
-            <div class="col-4 bg-light">
+            <div class="col-3 bg-light" id = "search-sidebar">
 
                 <!--Search Input-->
 
