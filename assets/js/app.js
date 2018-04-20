@@ -108,8 +108,10 @@ function runQuery(urlInput) {
             spanInfo.addClass("card-text text-center");
 
             var buttonDownload = $("<button>");
-            buttonDownload.html('<i class="fa fa-download card-text text-right"></i>')
-            buttonDownload.addClass("card-text text-center btn btn-block mb-2 btn-primary download-button")
+            buttonDownload.html('<i class="fa fa-plus"></i>')
+            buttonDownload.addClass("card-text text-center btn-block mb-2 btn btn-primary download-button");
+            buttonDownload.attr("selected-state", 0);
+
 
             textContainer.append(spanInfo, buttonDownload);
 
@@ -266,9 +268,25 @@ $(document).ready(function () {
         //DOWNLOAD BUTTON PRESSED IN CARD GIF
     }).on("click", ".download-button", function () {
 
-        //
-        $(this).closest(".gif-wrapper").addClass("dashed-border btn-download-this-gif");
-        $(this).removeClass("btn-primary")
+        //Add dashed outline and download selector to parent div class... Might need to just create a download url array here
+        console.log("case 0");
+        var selectedState = $(this).attr("selected-state");
+
+        console.log(selectedState);
+
+        if (selectedState == 0) {
+            console.log("Case 1");
+            $(this).removeClass("btn-primary").addClass("btn-danger").html('<i class="fa fa-minus"></i>');
+
+            $(this).closest(".gif-wrapper").addClass("dashed-border download-this-gif");
+
+            $(this).attr("selected-state", 1);
+        } else {
+            console.log("case 2");
+            $(this).removeClass("btn-danger").addClass("btn-primary").html('<i class="fa fa-plus"></i>');
+            $(this).closest(".gif-wrapper").removeClass("dashed-border download-this-gif");
+            $(this).attr("selected-state", 0);
+        }
     })
 
 
