@@ -142,8 +142,11 @@ function randomWord(param) {
 
 var $gifContainerTarget = $("#gif-container-main");
 var $resetButtonTarget = $("#reset-button");
-
-
+var $searchInputTarget = $("input");
+var $gifWebsiteTarget = $("#gif-website-selection")
+var $websiteSelectorTarget = $("#gif-website-selection")
+var $quantitySelectorTarget = $("#quantity-input-selection")
+var $ratingSelectorTarget = $("#rating-input")
 
 $(document).ready(function () {
 
@@ -203,14 +206,15 @@ $(document).ready(function () {
         console.log("RandomWord: ", randomWord);
 
         //Clear out the search bar and replace with selected random word
-        var searchInputTarget = $("input");
-        searchInputTarget.val(randomWord);
+        $searchInputTarget.val(randomWord);
 
 
     });
 
     //Gif on Click Event- Should Start/Stop the Gif
     $("body").on("click", ".gif", function () {
+        event.preventDefault();
+
         var state = $(this).attr("data-state");
 
         if (state === "still") {
@@ -226,10 +230,16 @@ $(document).ready(function () {
         var hoveredButton = $(this);
         randomWord(hoveredButton);
 
-        
+
     }).on("click", "#reset-button", function () {
         //Clear Gif Container, reset search form to default / cleared
         $gifContainerTarget.empty();
+        $searchInputTarget.val("Search");
+        $gifWebsiteTarget
+        $websiteSelectorTarget 
+        $quantitySelectorTarget 
+        $ratingSelectorTarget
+
     });
 
 
