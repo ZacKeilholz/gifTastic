@@ -59,6 +59,17 @@ Ajax code:
 //Functions
 //=================================
 
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+
+
 function runQuery(urlInput) {
 
     //Ajax Call Function
@@ -75,25 +86,38 @@ function runQuery(urlInput) {
         //gifContainer.empty();
         $("#example-image").attr("src", results[1].images.fixed_height.url);
 
+        //Get a random color to assign to the search group
+        var randomColor = getRandomColor();
+        console.log("COLOR: ", randomColor);
         //Create our html elements
         for (var i = 0; i < results.length; i++) {
 
             //Create Container and Elements- divWrapper controls responsiveness and margins
             var divWrapper = $("<div>");
-            divWrapper.addClass("col-lg-3 col-md-12 mb-2");
+            divWrapper.addClass("col-lg-3 col-md-12 pb-2 pt-2 gif-wrapper");
+            divWrapper.css("background", randomColor);
 
             var gifCard = $("<div>").addClass("card");
 
             //Captions and Text (Add Clickable 'DOWNLOAD' Class Button here)
-            var p = $("<p>");
-            p.text("Rating: " + results[i].rating)
-            p.addClass("card-text");
+            var textContainer = $("<div>");
+            textContainer.addClass("col-12 container");
+
+            var spanInfo = $("<p>");
+            spanInfo.text("RTG: " + results[i].rating)
+            spanInfo.addClass("card-text text-center");
+
+            var buttonDownload = $("<button>");
+            buttonDownload.html('<i class="fa fa-download card-text text-right"></i>')
+            buttonDownload.addClass("card-text text-center btn btn-block mb-2 btn-primary download-button")
+
+            textContainer.append(spanInfo, buttonDownload);
 
             //Create Image-
             var newImg = $("<img>");
 
             //Add Url's for Still and Animate Custom Attr's
-            newImg.attr("data-still", results[i].images.fixed_height_still.url);
+            newImg.attr("data-still");
             newImg.attr("data-animate", results[i].images.fixed_height.url);
 
             //Img Starting state on Page
@@ -104,8 +128,7 @@ function runQuery(urlInput) {
             newImg.addClass("card-img-top gif");
 
 
-            gifCard.append(newImg);
-            gifCard.append(p);
+            gifCard.append(newImg, textContainer);
             divWrapper.append(gifCard);
             $gifContainerTarget.prepend(divWrapper);
 
@@ -143,10 +166,9 @@ function randomWord(param) {
 var $gifContainerTarget = $("#gif-container-main");
 var $resetButtonTarget = $("#reset-button");
 var $searchInputTarget = $("input");
-var $gifWebsiteTarget = $("#gif-website-selection")
-var $websiteSelectorTarget = $("#gif-website-selection")
-var $quantitySelectorTarget = $("#quantity-input-selection")
-var $ratingSelectorTarget = $("#rating-input")
+var $gifWebsiteTarget = $("#gif-website-selection");
+var $quantitySelectorTarget = $("#quantity-input-selection");
+var $ratingSelectorTarget = $("#rating-input");
 
 $(document).ready(function () {
 
@@ -214,7 +236,7 @@ $(document).ready(function () {
     //Gif on Click Event- Should Start/Stop the Gif
     $("body").on("click", ".gif", function () {
         event.preventDefault();
-
+        console.log($(this).parent());
         var state = $(this).attr("data-state");
 
         if (state === "still") {
@@ -226,21 +248,28 @@ $(document).ready(function () {
         }
 
 
+
     }).on("mouseenter", ".random-button", function () {
         var hoveredButton = $(this);
         randomWord(hoveredButton);
 
 
+
     }).on("click", "#reset-button", function () {
         //Clear Gif Container, reset search form to default / cleared
         $gifContainerTarget.empty();
-        $searchInputTarget.val("Search");
-        $gifWebsiteTarget
-        $websiteSelectorTarget 
-        $quantitySelectorTarget 
-        $ratingSelectorTarget
+        $searchInputTarget.val("");
+        $gifWebsiteTarget.val("a");
+        $quantitySelectorTarget.val("10");
+        $ratingSelectorTarget.val("pg");
 
-    });
+        //DOWNLOAD BUTTON PRESSED IN CARD GIF
+    }).on("click", ".download-button", function () {
+
+        //
+        $(this).closest(".gif-wrapper").addClass("dashed-border btn-download-this-gif");
+        $(this).removeClass("btn-primary")
+    })
 
 
 

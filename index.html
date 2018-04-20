@@ -10,14 +10,20 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
         crossorigin="anonymous">
 
-    <title>gifTastic! (a gif downloader)</title>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>gifTastic!</title>
 
     <style>
         img:hover {
             cursor: pointer;
         }
 
-        
+        .dashed-border {
+            outline: 3px dashed white;
+            outline-offset: -5px;
+        }
     </style>
 </head>
 
@@ -26,7 +32,7 @@
     <nav class="navbar navbar-expand-sm|md|lg|-xl navbar-light bg-light">
         <span class="border border-dark-3">
             <a class="navbar-brand border-dark" href="#">
-                <h1 class="pl-3 display-1|2|3|4">gifTastic.</h1>
+                <h1 class="pl-3 display-1|2|3|4"> gifTastic.</h1>
             </a>
         </span>
         <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -61,7 +67,7 @@
         <div class="row">
 
             <!--Gif Content (Panel for now)-->
-            <div class="col-9">
+            <div class="col-9 bg-light pt-4">
                 <div class="panel panel-default">
                     <div class="row">
                         <div class="panel-heading">
@@ -170,6 +176,7 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
+
 
 
     <script src="assets/js/app.js"></script>
