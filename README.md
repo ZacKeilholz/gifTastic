@@ -1,14 +1,17 @@
 # **gifTastic** - a .gif downloader
 
+[gifTastic Link](https://github.com/ZacKeilholz/gifTastic)
+
 ## About:
 
 gifTastic is a simple, powerful, fast-loading and responsive .gif search engine and gif bulk-downloader built in HTML/CSS/Bootstrap 4/JS/Jquery that utilizes a number of API's including: Giphy and Wordnik.
 
 #### Will eventually: 
 
-1. Store current search and download selections locally.
+~~ 1. Store current search and download selections locally. ~~
 2. Grab all search inputs and store them in the cloud for my own personal gains (I might even share these as 'Popular Searches')
 3. Be able to search gif databases beyond Giphy.
+4. Play nicely on mobile :eek:
 
 ## Function:
 
