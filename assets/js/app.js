@@ -97,15 +97,15 @@ function runQuery(urlInput) {
             divWrapper.addClass("col-lg-3 col-md-4 col-sm-12 pb-2 pt-2 gif-wrapper");
             divWrapper.css("background", randomColor);
 
-            var gifCard = $("<div>").addClass("card");
+            var gifCard = $("<div>").addClass("card rounded-0");
 
             //Captions and Text (Add Clickable 'DOWNLOAD' Class Button here)
             var textContainer = $("<div>");
             textContainer.addClass("col-12 container");
 
             var spanInfo = $("<p>");
-            spanInfo.text("Rating: " + results[i].rating)
-            spanInfo.addClass("card-text text-center font-weight-bold");
+            spanInfo.text("rating: " + results[i].rating)
+            spanInfo.addClass("card-text text-center font-weight-bold pt-1");
 
             var buttonDownload = $("<button>");
             buttonDownload.html('<i class="fa fa-plus"></i>')

@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
         crossorigin="anonymous">
 
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.1/examples/dashboard/dashboard.css" rel="stylesheet">
+
     <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -25,15 +28,13 @@
             outline-offset: -5px;
         }
 
-        .sticky {
-            position: fixed;
-            right: 0px;
-            top: 80px;
-            padding-top: 10px;
+
+        .clear-headerA {
+            margin-top: 100px;
         }
 
-        .clear-header {
-            margin-top: 60px;
+        .clear-headerB {
+            margin-top:40px;
         }
 
         /* .inactive-link {
@@ -45,132 +46,130 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-sm|md|lg|-xl navbar-light bg-light fixed-top border-bottom">
-        <span class="border border-dark-3">
-            <a class="navbar-brand border-dark" href="#">
-                <h1 class="pl-3 display-1|2|3|4"> gifTastic.</h1>
+    <nav class="navbar navbar-white fixed-top bg-white flex-md-nowrap p-0 shadow">
+        
+            <a class="navbar-white border-dark text-center" href="#">
+                <h1 class=" pl-3 display-1|2|3|4 text-dark border border-dark ml-4 mt-2 p-1"> gifTastic.</h1>
             </a>
-        </span>
 
     </nav>
 
 
-    <div class="container-fluid bg-light">
+    <div class="container-fluid bg-light ">
         <div class="row">
 
-            <!--Gif Content (Panel for now)-->
-            <div class="col-md-9 col-sm-8 bg-light pt-4 clear-header" id="search-container">
-                <div class="panel panel-default">
-                    <div class="row">
-                        <div class="panel-heading pl-5">
-                            <h4 class="panel-title pt-2" id="search-results">Search Results:</h4>
-                        </div>
-                    </div>
-
-                    <div class="row">
-
-                        <!--Gif Container for jQuery content-->
-                        <div class="container">
-                            <div class="row" id="gif-container-main">
-
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <!--Favorites Container-->
-            <div class="col-md-9 col-sm-8 bg-light pt-4 clear-header" id="favorites-container">
-                <div class="panel panel-default">
-                    <div class="row">
-                        <div class="panel-heading pl-5">
-                            <h4 class="panel-title" id="favorites-title">My Favorites:</h4>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <!--Gif Container for jQuery content-->
-                        <div class="container">
-                            <div class="row" id="favorites-content">
-
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-
-         
             <!--Search and Favorites Column-->
-            <div class="col-sm-4 col-xs-1 col-md-3 bg-light sticky border-left border-bottom" id="search-sidebar">
+            <div class="col-sm-4 col-md-2 bg-light d-none d-md-block bg-light sidebar clear-headerB pl-3 pr-3" id="search-sidebar">
+                <div class="sidebar-sticky">
 
-                <!--Search Input-->
-                <button type="button" class="btn btn-block btn-primary mt-2 mb-2" data-toggle="0" ; id="favorites-page">
-                    <i class="fa fa-star" aria-hidden="true"></i> My Gifs</button>
+                    <!--Search Input-->
+                    <button type="button" class="btn btn-block btn-primary mt-2 mb-2" data-toggle="0" ; id="favorites-page">
+                        <i class="fa fa-star" aria-hidden="true"></i> My Gifs</button>
 
-                <div id="search-wrapper">
-                    <hr>
-                    <form class="form my-2 my-lg-0 mr-1">
-                        <label for="searchTerm">Search Term:</label>
-
-                        <input class="form-control mr-sm-2" id="search-text-input" type="text" placeholder="Search">
-
-                        <!--Gif Website to Search-->
-                        <div class="form-group mb-2 mt-2">
-                            <label for="selectGifWebsite">Gif Website:</label>
-                            <select class="form-control" disabled id="gif-website-selection">
-                                <option value="a" selected>Giphy</option>
-                                <option value="b">Something Else</option>
-                                <option value="c">Don't Care</option>
-                            </select>
-                        </div>
-
-                        <!--Number of Search Results-->
-                        <div class="form-group mb-2 mt-2">
-                            <label for="quantityOfResults">Results Quantity:</label>
-                            <select class="form-control" id="quantity-input-selection">
-                                <option value=5>5</option>
-                                <option value=10 selected>10</option>
-                                <option value=20>20</option>
-                                <option value=50>50</option>
-                            </select>
-                        </div>
-
-                        <!--Rating-->
-                        <div class="form-group mb-2 mt-2">
-                            <label for="ratingSelection">Select a Rating</label>
-                            <select class="form-control" id="rating-input">
-                                <option value="g">G</option>
-                                <option value="pg" selected>PG</option>
-                                <option value="r">R</option>
-                                <option value="any">Don't Care</option>
-                            </select>
-                        </div>
-
-                        <!-- Random Button Options -->
-                        <label for="randomChoices">Random Word:</label>
-                        <button type="button" class="btn btn-block btn-secondary random-button  mb-2 mt-2" data-number=1 id="random1">
-                            <i class="fa fa-question-circle"></i>
-                        </button>
+                    <div id="search-wrapper">
                         <hr>
+                        <form class="form my-2 my-lg-0 mr-1">
+                            <label for="searchTerm">Search Term:</label>
 
-                        <!--Search Submit-->
-                        <button class="btn btn-block btn-success mb-2 mt-2" id="search-button" type="submit">
-                            <i class="fa fa-search"></i> Search</button>
+                            <input class="form-control mr-sm-2" id="search-text-input" type="text" placeholder="Search">
 
-                    </form>
-                    <!--Reset button-->
-                    <button class="btn btn-block btn-danger mb-2 mt-2" id="reset-button">
-                        <i class="fa fa-undo"></i> Reset</button>
+                            <!--Gif Website to Search-->
+                            <div class="form-group mb-2 mt-2">
+                                <label for="selectGifWebsite">Gif Website:</label>
+                                <select class="form-control" disabled id="gif-website-selection">
+                                    <option value="a" selected>Giphy</option>
+                                    <option value="b">Something Else</option>
+                                    <option value="c">Don't Care</option>
+                                </select>
+                            </div>
+
+                            <!--Number of Search Results-->
+                            <div class="form-group mb-2 mt-2">
+                                <label for="quantityOfResults">Results Quantity:</label>
+                                <select class="form-control" id="quantity-input-selection">
+                                    <option value=5>5</option>
+                                    <option value=10 selected>10</option>
+                                    <option value=20>20</option>
+                                    <option value=50>50</option>
+                                </select>
+                            </div>
+
+                            <!--Rating-->
+                            <div class="form-group mb-2 mt-2">
+                                <label for="ratingSelection">Select a Rating</label>
+                                <select class="form-control" id="rating-input">
+                                    <option value="g">G</option>
+                                    <option value="pg" selected>PG</option>
+                                    <option value="r">R</option>
+                                    <option value="any">Don't Care</option>
+                                </select>
+                            </div>
+
+                            <!-- Random Button Options -->
+                            <label for="randomChoices">Random Word:</label>
+                            <button type="button" class="btn btn-block btn-secondary random-button  mb-2 mt-2" data-number=1 id="random1">
+                                <i class="fa fa-question-circle"></i>
+                            </button>
+                            <hr>
+
+                            <!--Search Submit-->
+                            <button class="btn btn-block btn-success mb-2 mt-2" id="search-button" type="submit">
+                                <i class="fa fa-search"></i> Search</button>
+
+                        </form>
+                        <!--Reset button-->
+                        <button class="btn btn-block btn-danger mb-2 mt-2" id="reset-button">
+                            <i class="fa fa-undo"></i> Reset</button>
+                    </div>
+
                 </div>
-
-
             </div>
 
-
+                <!--Gif Content (Panel for now)-->
+                <div class="col-sm-8 col-md-10 ml-sm-auto px-4 clear-headerA" id="search-container">
+                        <div class="panel panel-default">
+                            <div class="row">
+                                <div class="panel-heading">
+                                    <h4 class="panel-titl" id="search-results">Search Results:</h4>
+                                </div>
+                            </div>
+        
+                            <div class="row">
+        
+                                <!--Gif Container for jQuery content-->
+                                <div class="container">
+                                    <div class="row" id="gif-container-main">
+        
+                                    </div>
+                                </div>
+        
+        
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!--Favorites Container-->
+                    <div class="col-sm-8 col-md-10 ml-sm-auto px-4 clear-headerA" id="favorites-container">
+                        <div class="panel panel-default">
+                            <div class="row">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title" id="favorites-title">My Favorites:</h4>
+                                </div>
+                            </div>
+        
+                            <div class="row">
+                                <!--Gif Container for jQuery content-->
+                                <div class="container">
+                                    <div class="row" id="favorites-content">
+        
+                                    </div>
+                                </div>
+        
+        
+                            </div>
+                        </div>
+                    </div>
+        
         </div>
     </div>
     <!-- Optional JavaScript -->
