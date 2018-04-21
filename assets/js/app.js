@@ -208,6 +208,9 @@ $(document).ready(function () {
 
         //Rating 
         var rating = $("#rating-input").val();
+        if (rating=="any") {
+            rating = "pg";
+        };
 
         //I used a switch case because I would like to add other search engines in the future- they will have different requirements for assembling the query URL.
         switch (website) {
