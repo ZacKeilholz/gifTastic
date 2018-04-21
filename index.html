@@ -24,6 +24,11 @@
             outline: 3px dotted white;
             outline-offset: -5px;
         }
+
+        /* .inactive-link {
+            pointer-events: ;
+            cursor: default;
+        } */
     </style>
 </head>
 
@@ -63,15 +68,15 @@
     </nav>
 
 
-    <div class="container-fluid bg-secondary">
+    <div class="container-fluid bg-light">
         <div class="row">
 
             <!--Gif Content (Panel for now)-->
-            <div class="col-9 bg-light pt-4">
+            <div class="col-9 bg-light pt-4" id="search-container">
                 <div class="panel panel-default">
                     <div class="row">
                         <div class="panel-heading">
-                            <h3 class="panel-title" id="search-results">Search Results</h3>
+                            <h4 class="panel-title" id="search-results">Search Results:</h4>
                         </div>
                     </div>
 
@@ -89,69 +94,102 @@
                 </div>
             </div>
 
+            <!--Favorites Container-->
+            <div class="col-9 bg-light pt-4" id="favorites-container">
+                <div class="panel panel-default">
+                    <div class="row">
+                        <div class="panel-heading">
+                            <h4 class="panel-title" id="favorites-title">My Favorites:</h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!--Gif Container for jQuery content-->
+                        <div class="container">
+                            <div class="row" id="favorites-content">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
 
             <!--Search and Favorites Column-->
             <div class="col-3 bg-light" id="search-sidebar">
 
                 <!--Search Input-->
+                <button type="button" class="btn btn-block btn-primary mt-2 mb-2" data-toggle="0" ; id="favorites-page">
+                    <i class="fa fa-star" aria-hidden="true"></i> My Gifs</button>
 
-                <form class="form my-2 my-lg-0 mr-1">
-                    <label for="searchTerm">Search Term:</label>
+                <div id="search-wrapper">
+                    <form class="form my-2 my-lg-0 mr-1">
+                        <label for="searchTerm">Search Term:</label>
 
-                    <input class="form-control mr-sm-2" id="search-text-input" type="text" placeholder="Search">
+                        <input class="form-control mr-sm-2" id="search-text-input" type="text" placeholder="Search">
 
-                    <!--Gif Website to Search-->
-                    <div class="form-group">
-                        <label for="selectGifWebsite">Gif Website:</label>
-                        <select class="form-control" id="gif-website-selection">
-                            <option value="a" selected>Giphy</option>
-                            <option value="b">Something Else</option>
-                            <option value="c">Don't Care</option>
-                        </select>
-                    </div>
+                        <!--Gif Website to Search-->
+                        <div class="form-group mb-2 mt-2">
+                            <label for="selectGifWebsite">Gif Website:</label>
+                            <select class="form-control" disabled id="gif-website-selection">
+                                <option value="a" selected>Giphy</option>
+                                <option value="b">Something Else</option>
+                                <option value="c">Don't Care</option>
+                            </select>
+                        </div>
 
-                    <!--Number of Search Results-->
-                    <div class="form-group">
-                        <label for="quantityOfResults">Results Quantity:</label>
-                        <select class="form-control" id="quantity-input-selection">
-                            <option value=5>5</option>
-                            <option value=10 selected>10</option>
-                            <option value=20>20</option>
-                            <option value=50>50</option>
-                        </select>
-                    </div>
+                        <!--Number of Search Results-->
+                        <div class="form-group mb-2 mt-2">
+                            <label for="quantityOfResults">Results Quantity:</label>
+                            <select class="form-control" id="quantity-input-selection">
+                                <option value=5>5</option>
+                                <option value=10 selected>10</option>
+                                <option value=20>20</option>
+                                <option value=50>50</option>
+                            </select>
+                        </div>
 
-                    <!--Rating-->
-                    <div class="form-group">
-                        <label for="ratingSelection">Select a Rating</label>
-                        <select class="form-control" id="rating-input">
-                            <option value="g">G</option>
-                            <option value="pg" selected>PG</option>
-                            <option value="r">R</option>
-                            <option value="any">Don't Care</option>
-                        </select>
-                    </div>
-
-                    <!--Search Submit-->
-                    <button class="btn btn-block btn-success mb-2" id="search-button" type="submit">Search</button>
-
-                </form>
-                <!--Reset button-->
-                <button class="btn btn-block btn-danger" id="reset-button">Reset</button>
+                        <!--Rating-->
+                        <div class="form-group mb-2 mt-2">
+                            <label for="ratingSelection">Select a Rating</label>
+                            <select class="form-control" id="rating-input">
+                                <option value="g">G</option>
+                                <option value="pg" selected>PG</option>
+                                <option value="r">R</option>
+                                <option value="any">Don't Care</option>
+                            </select>
+                        </div>
 
 
 
-                <!-- Random Button Options -->
-                <label for="randomChoices">Random Options:</label>
-                <button type="button" class="btn btn-block btn-secondary random-button" data-number=1 id="random1">Random 1</button>
-                <button type="button" class="btn btn-block btn-secondary random-button" data-number=2 id="random2">Random 2</button>
-                <button type="button" class="btn btn-block btn-secondary random-button" data-number=3 id="random3">Random 3</button>
 
-                <label for="downloadSelected">Download:</label>
-                <button type="button" class="btn btn-block btn-danger" id="button-download">Download</button>
+
+                        <!-- Random Button Options -->
+                        <label for="randomChoices">Random Word:</label>
+                        <button type="button" class="btn btn-block btn-secondary random-button  mb-2 mt-2" data-number=1 id="random1">
+                            <i class="fa fa-question-circle"></i>
+                        </button>
+                        <hr>
+
+                        <!--Search Submit-->
+                        <button class="btn btn-block btn-success mb-2 mt-2" id="search-button" type="submit">
+                            <i class="fa fa-search"></i> Search</button>
+
+                    </form>
+                    <!--Reset button-->
+                    <button class="btn btn-block btn-danger mb-2 mt-2" id="reset-button">
+                        <i class="fa fa-undo"></i> Reset</button>
+                </div>
 
 
             </div>
+
+
         </div>
     </div>
     <!-- Optional JavaScript -->

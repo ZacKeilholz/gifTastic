@@ -104,16 +104,24 @@ function runQuery(urlInput) {
             textContainer.addClass("col-12 container");
 
             var spanInfo = $("<p>");
-            spanInfo.text("RTG: " + results[i].rating)
-            spanInfo.addClass("card-text text-center");
+            spanInfo.text("Rating: " + results[i].rating)
+            spanInfo.addClass("card-text text-center font-weight-bold");
 
             var buttonDownload = $("<button>");
             buttonDownload.html('<i class="fa fa-plus"></i>')
-            buttonDownload.addClass("card-text text-center btn-block mb-2 btn btn-primary download-button");
+            buttonDownload.addClass("card-text text-center btn-block mb-2 btn btn-primary download-gif");
             buttonDownload.attr("selected-state", 0);
 
 
             textContainer.append(spanInfo, buttonDownload);
+
+            //Image a href wrapper- set to inactive CSS class by default.
+
+            var getGifUrl = $(this).attr("data-animate");
+
+            var aHref = $("<a>");
+            aHref.attr("href", results[i].images.fixed_height.url);
+            aHref.addClass("inactive-link");
 
             //Create Image-
             var newImg = $("<img>");
@@ -129,8 +137,9 @@ function runQuery(urlInput) {
             //Add Misc / Other classes - gif is the selector class
             newImg.addClass("card-img-top gif");
 
+            aHref.append(newImg);
 
-            gifCard.append(newImg, textContainer);
+            gifCard.append(aHref, textContainer);
             divWrapper.append(gifCard);
             $gifContainerTarget.prepend(divWrapper);
 
@@ -172,6 +181,9 @@ var $gifWebsiteTarget = $("#gif-website-selection");
 var $quantitySelectorTarget = $("#quantity-input-selection");
 var $ratingSelectorTarget = $("#rating-input");
 
+$("#favorites-container").hide();
+$("#search-results").hide();
+
 $(document).ready(function () {
 
 
@@ -180,6 +192,7 @@ $(document).ready(function () {
     $("#search-button").on("click", function () {
         event.preventDefault();
 
+        $("#search-results").show();
         /////////////////////////////////
         //Retrieve All Search Input Values
         /////////////////////////////////
@@ -255,6 +268,11 @@ $(document).ready(function () {
         var hoveredButton = $(this);
         randomWord(hoveredButton);
 
+    }).on("mouseleave", ".random-button", function () {
+        var hoveredButton = $(this);
+        var buttonNumber = hoveredButton.attr("data-number");
+        console.log(buttonNumber);
+        hoveredButton.html('<i class="fa fa-question-circle"></i>');
 
 
     }).on("click", "#reset-button", function () {
@@ -266,29 +284,51 @@ $(document).ready(function () {
         $ratingSelectorTarget.val("pg");
 
         //DOWNLOAD BUTTON PRESSED IN CARD GIF
-    }).on("click", ".download-button", function () {
+    }).on("click", ".download-gif", function () {
 
         //Add dashed outline and download selector to parent div class... Might need to just create a download url array here
-        console.log("case 0");
         var selectedState = $(this).attr("selected-state");
-
-        console.log(selectedState);
-
         if (selectedState == 0) {
-            console.log("Case 1");
             $(this).removeClass("btn-primary").addClass("btn-danger").html('<i class="fa fa-minus"></i>');
-
-            $(this).closest(".gif-wrapper").addClass("dashed-border download-this-gif");
-
+            $(this).closest(".gif-wrapper").addClass("dashed-border");
             $(this).attr("selected-state", 1);
-        } else {
-            console.log("case 2");
-            $(this).removeClass("btn-danger").addClass("btn-primary").html('<i class="fa fa-plus"></i>');
-            $(this).closest(".gif-wrapper").removeClass("dashed-border download-this-gif");
-            $(this).attr("selected-state", 0);
-        }
-    })
 
+            var parentContainer = $(this).closest(".gif-wrapper");
+            $("#favorites-content").append(parentContainer);
+
+        } else {
+            var parentContainer = $(this).closest(".gif-wrapper");
+            parentContainer.fadeOut("fast");
+            parentContainer.remove();
+
+        }
+
+        //Favorites Button Clicked- Go to Favorites Page
+    }).on("click", "#favorites-page", function () {
+        var toggle = $(this).attr("data-toggle");
+
+        if (toggle == 0) {
+            //Hide Search Content and Show Favorites
+            $("#search-container").slideUp();
+            $("#favorites-container").slideDown();
+
+            //Hide Search Engine
+            $("#search-wrapper").slideUp();
+
+            //Change Button Contents
+            $(this).text("Return to Search!")
+            $(this).attr("data-toggle", "1");
+        } else {
+
+            $("#favorites-container").slideUp();
+            $("#search-container").slideDown();
+            $(this).text("Favorites:")
+            $("#search-wrapper").slideDown();
+            $(this).attr("data-toggle", "0");
+
+        }
+
+    });
 
 
 
@@ -298,6 +338,13 @@ $(document).ready(function () {
     //     console.log(buttonNumber);
     //     hoveredButton.text("Random " + hoveredButton.attr("data-number"));
     // });
+    //DOWNLOAD ALL SELECTED GIFS.  
+    // }).on("click",".button-download", function () {
+    //     //Add HTML5 Download attribute to selected gifs, and wrap the gif images in an a tag, trigger a click event on those images... make sure the gif url is the image that is downloaded- may need to force swap the image link.  
+    //     $("a.download-this-gif").attr("download",true);
 
+    //     $("body").trigger("click",".download-this-gif");
+
+    // })
 
 });
