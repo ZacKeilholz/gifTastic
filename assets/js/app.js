@@ -94,7 +94,7 @@ function runQuery(urlInput) {
 
             //Create Container and Elements- divWrapper controls responsiveness and margins
             var divWrapper = $("<div>");
-            divWrapper.addClass("col-lg-3 col-md-12 pb-2 pt-2 gif-wrapper");
+            divWrapper.addClass("col-lg-3 col-md-4 col-sm-12 pb-2 pt-2 gif-wrapper");
             divWrapper.css("background", randomColor);
 
             var gifCard = $("<div>").addClass("card");
@@ -322,7 +322,7 @@ $(document).ready(function () {
 
             $("#favorites-container").slideUp();
             $("#search-container").slideDown();
-            $(this).text("Favorites:")
+            $(this).html('<i class="fa fa-star" aria-hidden="true"></i> My Gifs');
             $("#search-wrapper").slideDown();
             $(this).attr("data-toggle", "0");
 

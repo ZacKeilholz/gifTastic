@@ -25,6 +25,17 @@
             outline-offset: -5px;
         }
 
+        .sticky {
+            position: fixed;
+            right: 0px;
+            top: 80px;
+            padding-top: 10px;
+        }
+
+        .clear-header {
+            margin-top: 60px;
+        }
+
         /* .inactive-link {
             pointer-events: ;
             cursor: default;
@@ -34,37 +45,13 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-sm|md|lg|-xl navbar-light bg-light">
+    <nav class="navbar navbar-expand-sm|md|lg|-xl navbar-light bg-light fixed-top border-bottom">
         <span class="border border-dark-3">
             <a class="navbar-brand border-dark" href="#">
                 <h1 class="pl-3 display-1|2|3|4"> gifTastic.</h1>
             </a>
         </span>
-        <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" href="#">Action 1</a>
-                        <a class="dropdown-item" href="#">Action 2</a>
-                    </div>
 
-                </li>
-            </ul>
-
-        </div>
     </nav>
 
 
@@ -72,11 +59,11 @@
         <div class="row">
 
             <!--Gif Content (Panel for now)-->
-            <div class="col-9 bg-light pt-4" id="search-container">
+            <div class="col-md-9 col-sm-8 bg-light pt-4 clear-header" id="search-container">
                 <div class="panel panel-default">
                     <div class="row">
-                        <div class="panel-heading">
-                            <h4 class="panel-title" id="search-results">Search Results:</h4>
+                        <div class="panel-heading pl-5">
+                            <h4 class="panel-title pt-2" id="search-results">Search Results:</h4>
                         </div>
                     </div>
 
@@ -95,10 +82,10 @@
             </div>
 
             <!--Favorites Container-->
-            <div class="col-9 bg-light pt-4" id="favorites-container">
+            <div class="col-md-9 col-sm-8 bg-light pt-4 clear-header" id="favorites-container">
                 <div class="panel panel-default">
                     <div class="row">
-                        <div class="panel-heading">
+                        <div class="panel-heading pl-5">
                             <h4 class="panel-title" id="favorites-title">My Favorites:</h4>
                         </div>
                     </div>
@@ -116,18 +103,16 @@
                 </div>
             </div>
 
-
-
-
-
+         
             <!--Search and Favorites Column-->
-            <div class="col-3 bg-light" id="search-sidebar">
+            <div class="col-sm-4 col-xs-1 col-md-3 bg-light sticky border-left border-bottom" id="search-sidebar">
 
                 <!--Search Input-->
                 <button type="button" class="btn btn-block btn-primary mt-2 mb-2" data-toggle="0" ; id="favorites-page">
                     <i class="fa fa-star" aria-hidden="true"></i> My Gifs</button>
 
                 <div id="search-wrapper">
+                    <hr>
                     <form class="form my-2 my-lg-0 mr-1">
                         <label for="searchTerm">Search Term:</label>
 
@@ -164,10 +149,6 @@
                                 <option value="any">Don't Care</option>
                             </select>
                         </div>
-
-
-
-
 
                         <!-- Random Button Options -->
                         <label for="randomChoices">Random Word:</label>
