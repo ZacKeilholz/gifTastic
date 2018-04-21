@@ -37,14 +37,19 @@
             margin-top: 40px;
         }
 
+        .small-screen-height {
+            height:50px !important;
+        }
+
         @media screen and (max-width: 600px) {
 
             .sidebar {
-                position:absolute;
-                top:10px;
+                position: absolute;
+                top: 10px;
             }
         }
-            /* .inactive-link {
+
+        /* .inactive-link {
             pointer-events: ;
             cursor: default;
         } */
@@ -54,13 +59,16 @@
 <body>
 
     <nav class="navbar navbar-white fixed-top bg-white flex-md-nowrap p-0 shadow">
-
-        <a class="navbar-white border-dark text-center" href="#">
+        <a class="navbar-white border-dark text-center" href="index.html">
             <h1 class=" pl-3 display-1|2|3|4 text-dark border border-dark ml-4 mt-2 p-1"> gifTastic.</h1>
         </a>
 
+        <span class="ml-auto p-3 mr-4 btn" data-toggle="0" id="collapsed-search-button">
+            <h2 class="mr-2">
+                <i class="fa fa-search"></i>
+            </h2>
+        </span>
     </nav>
-
 
     <div class="container-fluid bg-light ">
         <div class="row">
