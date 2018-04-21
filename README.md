@@ -1,6 +1,6 @@
 # **gifTastic** - a .gif downloader
 
-## Link: [gifTastic Link](https://zackeilholz.github.io/gifTastic/)
+## Link: [gifTastic](https://zackeilholz.github.io/gifTastic/)
 
 ## About:
 
