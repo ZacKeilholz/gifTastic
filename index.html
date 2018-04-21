@@ -34,10 +34,17 @@
         }
 
         .clear-headerB {
-            margin-top:40px;
+            margin-top: 40px;
         }
 
-        /* .inactive-link {
+        @media screen and (max-width: 600px) {
+
+            .sidebar {
+                position:absolute;
+                top:10px;
+            }
+        }
+            /* .inactive-link {
             pointer-events: ;
             cursor: default;
         } */
@@ -47,10 +54,10 @@
 <body>
 
     <nav class="navbar navbar-white fixed-top bg-white flex-md-nowrap p-0 shadow">
-        
-            <a class="navbar-white border-dark text-center" href="#">
-                <h1 class=" pl-3 display-1|2|3|4 text-dark border border-dark ml-4 mt-2 p-1"> gifTastic.</h1>
-            </a>
+
+        <a class="navbar-white border-dark text-center" href="#">
+            <h1 class=" pl-3 display-1|2|3|4 text-dark border border-dark ml-4 mt-2 p-1"> gifTastic.</h1>
+        </a>
 
     </nav>
 
@@ -59,7 +66,7 @@
         <div class="row">
 
             <!--Search and Favorites Column-->
-            <div class="col-sm-4 col-md-2 bg-light d-none d-md-block bg-light sidebar clear-headerB pl-3 pr-3" id="search-sidebar">
+            <div class="col-sm-2 col-md-3 bg-light sidebar clear-headerB pl-3 pr-3" id="search-sidebar">
                 <div class="sidebar-sticky">
 
                     <!--Search Input-->
@@ -125,51 +132,51 @@
                 </div>
             </div>
 
-                <!--Gif Content (Panel for now)-->
-                <div class="col-sm-8 col-md-10 ml-sm-auto px-4 clear-headerA" id="search-container">
-                        <div class="panel panel-default">
-                            <div class="row">
-                                <div class="panel-heading">
-                                    <h4 class="panel-titl" id="search-results">Search Results:</h4>
-                                </div>
-                            </div>
-        
-                            <div class="row">
-        
-                                <!--Gif Container for jQuery content-->
-                                <div class="container">
-                                    <div class="row" id="gif-container-main">
-        
-                                    </div>
-                                </div>
-        
-        
-                            </div>
+            <!--Gif Content (Panel for now)-->
+            <div class="col-sm-10 col-md-9 ml-sm-auto px-4 clear-headerA" id="search-container">
+                <div class="panel panel-default">
+                    <div class="row">
+                        <div class="panel-heading">
+                            <h4 class="panel-titl" id="search-results">Search Results:</h4>
                         </div>
                     </div>
-        
-                    <!--Favorites Container-->
-                    <div class="col-sm-8 col-md-10 ml-sm-auto px-4 clear-headerA" id="favorites-container">
-                        <div class="panel panel-default">
-                            <div class="row">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title" id="favorites-title">My Favorites:</h4>
-                                </div>
-                            </div>
-        
-                            <div class="row">
-                                <!--Gif Container for jQuery content-->
-                                <div class="container">
-                                    <div class="row" id="favorites-content">
-        
-                                    </div>
-                                </div>
-        
-        
+
+                    <div class="row">
+
+                        <!--Gif Container for jQuery content-->
+                        <div class="container">
+                            <div class="row" id="gif-container-main">
+
                             </div>
                         </div>
+
+
                     </div>
-        
+                </div>
+            </div>
+
+            <!--Favorites Container-->
+            <div class="col-sm-10 col-md-9 ml-sm-auto px-4 clear-headerA" id="favorites-container">
+                <div class="panel panel-default">
+                    <div class="row">
+                        <div class="panel-heading">
+                            <h4 class="panel-title" id="favorites-title">My Favorites:</h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!--Gif Container for jQuery content-->
+                        <div class="container">
+                            <div class="row" id="favorites-content">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <!-- Optional JavaScript -->
