@@ -87,7 +87,7 @@ function runQuery(urlInput) {
             divWrapper.addClass("col-lg-3 col-md-4 col-sm-12 pb-2 pt-2 gif-wrapper");
             divWrapper.css("background", randomColor);
 
-            //Card to be place inside the div container
+            //Card to be place inside the div containerrounded
             var gifCard = $("<div>").addClass("card rounded-0");
 
             //Captions and Text (Add Clickable 'DOWNLOAD' Class Button here)
@@ -102,7 +102,7 @@ function runQuery(urlInput) {
             //Create a download button - this ended up becoming a 'Favorites' button
             var buttonDownload = $("<button>");
             buttonDownload.html('<i class="fa fa-plus"></i>')
-            buttonDownload.addClass("card-text text-center btn-block mb-2 btn btn-primary download-gif");
+            buttonDownload.addClass("card-text text-center btn-block mb-2 rounded-0 btn btn-primary download-gif");
             buttonDownload.attr("selected-state", 0);
 
             //Add text and button to larger text container
@@ -352,7 +352,12 @@ $(document).ready(function () {
             sidebarGrow();
         }
 
+    }).on("mouseenter", "h1", function () {
+        var newColor = getRandomColor();
+        $(this).css("background-color",newColor);
     });
+
+    
 });
 
 /*GifTastic JS To-Do LIst
