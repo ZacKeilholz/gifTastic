@@ -49,7 +49,7 @@ function getRandomColor() {
 function randomWord(param) {
 
     //API Query Constructed at: http://developer.wordnik.com/docs.html#!/words/getRandomWord_get_4
-    wordnikURL = 'http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech=noun&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=-1&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5';
+    wordnikURL = 'https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&minCorpusCount=0&minLength=5&maxLength=15&limit=1&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5';
 
     //Ajax Call Function
     $.ajax({
@@ -57,8 +57,7 @@ function randomWord(param) {
         method: "GET"
     }).then(function (response) {
         var newWord = response;
-        console.log(newWord);
-        param.text(newWord.word);
+        param.text(newWord[0].word);
     });
 }
 
