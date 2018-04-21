@@ -4,7 +4,7 @@
 
 ## About:
 
-gifTastic is a simple, powerful, fast-loading and responsive .gif search engine and gif bulk-downloader built in HTML/CSS/Bootstrap 4/JS/Jquery that utilizes a number of API's including: Giphy and Wordnik.
+gifTastic is a simple, powerful, fast-loading and responsive .gif search engine and gif bulk-downloader built in HTML/CSS/Bootstrap 4/Ajax/JS/Jquery that utilizes a number of API's including: Giphy and Wordnik.
 
 #### Will eventually: 
 
