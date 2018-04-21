@@ -8,7 +8,7 @@ gifTastic is a simple, powerful, fast-loading and responsive .gif search engine 
 
 #### Will eventually: 
 
-~~ 1. Store current search and download selections locally. ~~
+1. Store current search and download selections locally.
 2. Grab all search inputs and store them in the cloud for my own personal gains (I might even share these as 'Popular Searches')
 3. Be able to search gif databases beyond Giphy.
 4. Play nicely on mobile :eek:
